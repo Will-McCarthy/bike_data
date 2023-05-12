@@ -10,7 +10,7 @@ As many of you know, I have an obsession with mountian biking. Personally, I hav
 
 My first step was to get a dataset, so I wrote a web scraper. I pulled data on 26k mountian bikes from my favorite place to go shoping: pinkbike's buy/sell market. Pinkbike's buy/sell market is similar to craigslist for selling high end used mountian bikes. You can see my scraper and the results on my github: https://github.com/Will-McCarthy/bike_data/tree/main.
 
-The next steps of this project are creating a database for the data, cleaning it, visualizing it, and finally using ML algorithms to answer harder questions.  
+The next steps of this project are creating a database, cleaning the data, visualizing it, and finally using ML algorithms to answer harder questions.  
 
 ## Installation
 
