@@ -7,24 +7,24 @@ bike_data is a data science project focused on understanding the mountain bike m
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
 
 ```bash
-pip install foobar
-pip install beautifulsoup4
+pip3 install requests
+pip3 install re
+pip3 install beautifulsoup4
+pip3 install itertools
+pip3 install datetime
+pip3 install time
+pip3 install csv
+pip3 install pandas
+pip3 install pathlib
+pip3 install
 
 ```
 
+
 ## Usage
 
-```python
-import foobar
-
-# returns 'words'
-foobar.pluralize('word')
-
-# returns 'geese'
-foobar.pluralize('goose')
-
-# returns 'phenomenon'
-foobar.singularize('phenomena')
+```bash
+python3 pinkbike_scraper.py
 ```
 
 ## Contributing
