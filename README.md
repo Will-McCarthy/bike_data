@@ -12,7 +12,6 @@ pip3 install re
 pip3 install beautifulsoup4
 pip3 install itertools
 pip3 install datetime
-pip3 install time
 pip3 install csv
 pip3 install pandas
 pip3 install pathlib
