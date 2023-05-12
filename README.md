@@ -15,8 +15,6 @@ pip3 install datetime
 pip3 install csv
 pip3 install pandas
 pip3 install pathlib
-pip3 install
-
 ```
 
 
