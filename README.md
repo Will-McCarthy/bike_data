@@ -2,7 +2,7 @@
 
 bike_data is a data science project focused on understanding the mountain bike market.
 
-# Hi Linkedin,
+## Hi Linkedin,
 
 I started a data science project to demonstrate some of my data science skills! 
 
