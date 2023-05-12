@@ -4,13 +4,29 @@ bike_data is a data science project focused on understanding the mountain bike m
 
 ## Hi Linkedin,
 
-I started a data science project to demonstrate some of my data science skills! 
 
-As many of you know, I have an obsession with mountian biking. Personally, I have 4 bikes. Although that seems like enough, the correct number of bikes is n+1, where n is the current number of bikes owned. I decided to find my next bike by doing some analysis on the mountian bike market. 
 
-My first step was to get a dataset, so I wrote a web scraper. I pulled data on 26k mountian bikes from my favorite place to go shoping: pinkbike's buy/sell market. Pinkbike's buy/sell market is similar to craigslist for selling high end used mountian bikes. You can see my scraper and the results on my github: https://github.com/Will-McCarthy/bike_data/tree/main.
+In an effort to demonstrate my data science expertise, I turned my passion into a data science project, a "passion project" if you will.
 
-The next steps of this project are creating a database, cleaning the data, visualizing it, and finally using ML algorithms to answer harder questions.  
+
+
+As many of you know, I have a healthy obsession with mountain biking. Personally, I have four bikes. Although this would be enough for most people, the correct number of bikes is n+1, where n is the current number of bikes owned. I decided to find my next bike by doing some analysis on the mountain bike market.
+
+
+
+The first step was to obtain a dataset, so I wrote a web scraper and pulled data on 26k mountain bikes from my favorite place to go shopping: Pinkbike's buy/sell market. This market is similar to craigslist for selling high-end, used mountain bikes.
+
+
+
+This is the first step an exciting project! Take a look at my scraper and the results on my github: https://github.com/Will-McCarthy/bike_data/tree/main.
+
+
+
+My next steps for this project are to create a database, clean and visualize the data, and finally use ML algorithms to answer more difficult questions.
+
+
+
+Stay tuned on my account for more project updates, coming soon!
 
 ## Installation
 
