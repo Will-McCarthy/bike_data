@@ -8,20 +8,35 @@ import csv
 import pandas
 from pathlib import Path
 from forex_python.converter import CurrencyRates
+from tqdm import tqdm
 
 i=0
 bikes = []
-YEAR_PATTERN = re.compile("^2[0-9]{3}$")
+YEAR_PATTERN = re.compile("^(19|20)\d{2}$")
 FOREX = CurrencyRates()
+numRetry = 0
+df_brands = pandas.read_csv("brands.csv")
+masterBrands = df_brands.loc[:,'Brand']
+masterSpellings = df_brands.loc[:,'Spelling']
 
 # iterate over every page
-for page in range(1,1300):
+for page in tqdm(range(1,1280)):
+    time.sleep(.1)
     # Create URL and request html for the page
     URL = 'https://www.pinkbike.com/buysell/list/?region=3&page='+ str(page) + '&category=75,102,2,1,74&itemcondition=2,3,4,5,6'
-    req = requests.get(URL)
-    time.sleep(1)
-    # success code - 200
-    print(req)
+    try:
+        req = requests.get(URL, timeout=1)
+        req.raise_for_status()
+    except Exception as err: #need to do a better error handling here
+        print("Issue with the network")
+        print(err.args[0])
+        numRetry = numRetry + 1
+        if numRetry < 12:
+            continue
+        else:
+            #page = page - 1
+            time.sleep(10)
+            break
 
     # Parsing the HTML
     soup = BeautifulSoup(req.content, 'html.parser')
@@ -44,10 +59,12 @@ for page in range(1,1300):
         if YEAR_PATTERN.match(title.split(" ", 1)[0]):
             year = title.split(" ", 1)[0]
             item["Year"] = year
-            try:
-                title = title.split(" ", 1)[1]
-            except IndexError:
-                title = None
+
+        # parsing brand from title text
+        for (masterBrand, masterSpelling) in zip(masterBrands, masterSpellings):
+            if masterSpelling.upper() in title.upper():
+                bike['Brand'] = masterBrand
+                break
 
         # put year, title and category into bike dictionary
         bike['Year'] = year
@@ -61,9 +78,21 @@ for page in range(1,1300):
         bike["Price"] = ammount
         bike["Currency"] = currency
 
+        ammount = int(ammount.lstrip("$"))
+        if currency == 'CAD':
+            bike["Price in USD"] = ammount * .74
+        elif currency == 'EUR':
+            bike["Price in USD"] = ammount * 1.04
+        elif currency == 'GBP':
+            bike["Price in USD"] = ammount * 1.25
+        elif currency == 'zl':
+            bike["Price in USD"] = ammount * .24
+        elif currency == 'USD':
+            bike["Price in USD"] = ammount
+
         #convert everything to USD and format
-        usdPrice = FOREX.convert(currency, "USD", int(ammount.lstrip("$")))
-        bike["Price in USD"] = '$'+'{:.2f}'.format(usdPrice)
+        # usdPrice = FOREX.convert(currency, "USD", int(ammount.lstrip("$")))
+        # bike["Price in USD"] = '$'+'{:.2f}'.format(usdPrice)
 
         # put link and ID into bike dictionary
         link = item.find('a').get('href')
@@ -72,7 +101,13 @@ for page in range(1,1300):
 
         # get location sold from
         location = detail.find('img').next_element.strip()
-        bike["Location"] = location
+        try:
+            bike["City"] = location.split(',')[0].strip()
+            bike["State"] = location.split(',')[1].strip()
+            bike["Country"] = location.split(',')[2].strip()
+        except:
+            bike['Country'] = bike['State']
+            bike['State'] = ''
 
         # Get item specs from itemdetail class
         itemSpecs = item.find_all('div', class_='itemdetail')
@@ -98,8 +133,8 @@ for page in range(1,1300):
         # add bike to bikes list
         bikes.append(bike)
         i = i + 1
-    print(i)
 
 # put bikes list into csv
 df = pandas.DataFrame(bikes)
-df.to_csv("~/pinkbike-scrape-willy/Bikes.csv", index=False)
+df.to_csv("~/pinkbike-scrape-willy/North_American_Bikes.csv", index=False)
+print('Data Stored in North_American_Bikes.csv')

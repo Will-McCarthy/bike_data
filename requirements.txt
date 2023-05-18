@@ -2,3 +2,4 @@ beautifulsoup4==4.12.2
 forex_python==1.8
 pandas==2.0.1
 Requests==2.30.0
+tqdm==4.65.0
