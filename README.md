@@ -18,7 +18,7 @@ As many of you know, I have a healthy obsession with mountain biking. Personally
 
 1) The first step was to obtain a dataset, so I wrote a web scraper and pulled data on 41k mountain bikes from my favorite place to go shopping: Pinkbike's buy/sell market. This market is similar to craigslist for selling high-end, used mountain bikes. 
 
-2) The second step was to get the data into a format that could be used. I used the title text to extract the model year and brand. Often the brand name was not explicity mentioned in the title, so I created a list of keywords that are used when refering to specific models in order to extract the brand.   
+2) The second step was to get the data into a format that could be used. I removed rows with missing data and filtered out outliers. I used the title text to extract the bikes' brand and model year. Often the brand name was not explicity mentioned in the title, so I created a list of keywords related to specific brands in order to extract the brand. 
 
 3) With that data, I created preliminary visualizations in Tableau to see what features may be useful in building models. I found that features like frame materials and brand had a significant impact, but features like frame size and location were not as correlated. 
 
