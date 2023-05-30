@@ -30,7 +30,7 @@ As many of you know, I have a healthy obsession with mountain biking. Personally
 
 The linear model produced the fastest results, random forrest produced the most accurate and SVM and polynomial models were not fit for this application.The linear model and random forrest produced R^2 values of ~.67, meaning they were decent at estimating price, but often had large misses. The error in this model is likely due to 2 things: 
 
-1) There are missing details on each bike. Pinkbike does not have accurate data on component spec or if the bike is an e-bike. Two bikes that have the same frame with different components can be thousands of dollars difference in price. 
+1) There are missing details on each bike. Pinkbike does not have accurate data on component spec or if the bike is an e-bike. Two bikes that have the same frame with different components can have thousands of dollars difference in price. 
 
 2) The second source of error is the way these bikes are listed. Because private individuals list their bikes, there is variance between what two people think a bike is worth, making it harder to predict what the list price of a bike may be.   
 
