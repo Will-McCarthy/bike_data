@@ -20,7 +20,7 @@ As many of you know, I have a healthy obsession with mountain biking. Personally
 
 2) The second step was to get the data into a format that could be used. I removed rows with missing data and filtered out outliers. I used the title text to extract the bikes' brand and model year. Often the brand name was not explicity mentioned in the title, so I created a list of keywords related to specific brands in order to extract the brand. 
 
-3) With that data, I created preliminary visualizations in Tableau to see what features may be useful in building models. I found that features like frame materials and brand had a significant impact, but features like frame size and location were not as correlated. 
+3) With that data, I created preliminary visualizations in Tableau to see what features may be useful in building models. I found that features like frame materials and model year had a significant impact, but features like frame size and location were not as correlated. 
 
 4) I then trained and tested many different regression models using the most important features to find the best fit. I used a linear model, decision tree, random forrest, support vector machine and a polynomial model. 
 
